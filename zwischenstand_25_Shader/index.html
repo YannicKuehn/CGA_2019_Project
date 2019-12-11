@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script id="lamellen.vert" type="x-shader/x-vertex">
+    varying vec2 vUv;
+    void main() {
+
+        // Der Vertex soll auf sich selber abgebildet (d.h. nicht verändert) werden:
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
+        // UV-Koordinaten des Vertex erfassen ("Varying" für den Fragment Shader):
+        vUv = uv;
+    }
+</script>
+
+<script id="lamellen.frag" type="x-shader/x-fragment">
+    uniform vec3 color1;
+    uniform vec3 color2;
+    uniform float amount;
+    varying vec2 vUv;
+    void main() {
+
+        // Mischungsverhältnis der Farben in vertikaler Richtung (vUv.y) sinusförmig verändern:
+        float p = abs(sin(amount*vUv.x));
+
+        // Farben mischen
+        vec3 col = mix(color1, color2, vec3(p));
+
+        // Fragment einfärben
+        gl_FragColor = vec4(col, 1.0);
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CGA_WS2019</title>
+</head>
+<body style="margin:0; overflow:hidden">
+<div id="3d_content"></div>
+<script src="src/main.js"></script>
+</body>
+</html>
