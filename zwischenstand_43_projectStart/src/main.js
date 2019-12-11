@@ -10,6 +10,7 @@ document.write('<script type="text/javascript" src="../../lib/cannon.js-0.6.2/bu
 document.write('<script type="text/javascript" src="../../lib/cannon.js-0.6.2/tools/threejs/CannonDebugRenderer.js"></script>');
 
 // Own modules
+document.write('<script type="text/javascript" src="src/objects/GameBoy.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Radio.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Floor.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/RadioFromFile.js"></script>');
@@ -48,6 +49,10 @@ function main() {
     radio.rotation.y = 20 * DEG_TO_RAD;
     physics.addBox(radio, 3, 30, 20, 8);
     scene.add(radio);
+
+    let gameBoy = new GameBoy();
+    gameBoy.position.set(0, 90, 15);
+    scene.add(gameBoy);
 
     var radioFromFile = new RadioFromFile();
     radioFromFile.position.set(30, 83, 10);
