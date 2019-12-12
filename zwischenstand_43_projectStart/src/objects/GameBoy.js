@@ -28,18 +28,38 @@ class GameBoy extends THREE.Group {
         let aButton = new THREE.Mesh(abButtonGeometry, abButtonMaterial);
         let bButton = new THREE.Mesh(abButtonGeometry, abButtonMaterial);
 
-        aButton.position.x = 1;
-        aButton.position.y = -3;
-        aButton.position.z = 1;
+        aButton.position.x = 3.5;
+        aButton.position.y = -2.5;
+        aButton.position.z = 0.75;
 
         aButton.rotation.x = 90 * DEG_TO_RAD;
         this.add(aButton);
 
-        bButton.position.x = 3;
-        bButton.position.y = -1;
-        bButton.position.z = 1;
+        bButton.position.x = 1.7;
+        bButton.position.y = -3.5;
+        bButton.position.z = 0.75;
 
         bButton.rotation.x = 90 * DEG_TO_RAD;
         this.add(bButton);
+
+        let crossMaterial = new THREE.MeshStandardMaterial({color: 0x404040, roughness: 0.2, metalness: 0.1});
+        let crossGeometry = new THREE.BoxGeometry(2,0.75,1);
+
+        let verticalCross = new THREE.Mesh(crossGeometry, crossMaterial);
+        let horizontalCross = new THREE.Mesh(crossGeometry, crossMaterial);
+
+        verticalCross.position.x = -2.5;
+        verticalCross.position.y = -3;
+        verticalCross.position.z = 1.25;
+        this.add(verticalCross);
+
+        horizontalCross.position.x = -2.5;
+        horizontalCross.position.y = -3;
+        horizontalCross.position.z = 1.25;
+        horizontalCross.rotation.z = 90 * DEG_TO_RAD;
+        this.add(horizontalCross);
+
+        let startButtonMaterial = new THREE.MeshStandardMaterial({color: 0x141414, roughness: 0.2, metalness: 0.1});
+
     }
 }
