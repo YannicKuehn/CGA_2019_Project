@@ -66,21 +66,19 @@ class GameBoy extends THREE.Group {
 
         let abButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x5e044c, roughness: 0.4, metalness: 0 });
         let abButtonGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32, 1, false);
-
+        
         let aButton = new THREE.Mesh(abButtonGeometry, abButtonMaterial);
         let bButton = new THREE.Mesh(abButtonGeometry, abButtonMaterial);
 
         aButton.position.x = 3.5;
         aButton.position.y = -2.5;
         aButton.position.z = 0.5;
-
         aButton.rotation.x = 90 * DEG_TO_RAD;
         this.add(aButton);
 
         bButton.position.x = 1.9;
         bButton.position.y = -3.45;
         bButton.position.z = 0.5;
-
         bButton.rotation.x = 90 * DEG_TO_RAD;
         this.add(bButton);
 
@@ -108,71 +106,54 @@ class GameBoy extends THREE.Group {
         let startButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x4d4d4d, roughness: 0.4, metalness: 0 });
         let startButtonGeometry = new THREE.SphereGeometry(0.2, 32, 32);
         startButtonGeometry.applyMatrix(new THREE.Matrix4().makeScale(3, 1, 1));
-
         let startButton = new THREE.Mesh(startButtonGeometry, startButtonMaterial);
-
-
         startButton.position.x = 0.7;
         startButton.position.y = -5;
         startButton.position.z = 1.2;
-
         startButton.rotation.z = 30 * DEG_TO_RAD;
-
         this.add(startButton);
 
        
         let selectButton = new THREE.Mesh(startButtonGeometry, startButtonMaterial);
-
         selectButton.position.x = -0.7;
         selectButton.position.y = -5;
         selectButton.position.z = 1.2;
-
         selectButton.rotation.z = 30 * DEG_TO_RAD;
-
         this.add(selectButton);
 
-
+        //screenCase
         let screenCaseMaterial = new THREE.MeshStandardMaterial({ color: 0x4d4d4d, roughness: 0.4, metalness: 0 });
         let screenCaseGeometry = new THREE.BoxGeometry(8,7,2);
-
         let screenCase = new THREE.Mesh(screenCaseGeometry, screenCaseMaterial);
-
         screenCase.position.y = 3;
-        screenCase.position.z = 0.27;
-
+        screenCase.position.z = 0.28;
         this.add(screenCase);
 
+        //sreen
         let screenMaterial = new THREE.MeshStandardMaterial({ color: 0x4b694a, roughness: 0.4, metalness: 0 });
         let screenGeometry = new THREE.BoxGeometry(6, 5, 2);
-
         let screen = new THREE.Mesh(screenGeometry, screenMaterial);
-
         screen.position.y = 3;
-        screen.position.z = 0.3;
-
+        screen.position.z = 0.31;
         this.add(screen);
 
+        //controlLamp
         let controlLampMaterial = new THREE.MeshStandardMaterial({ color: 0x700329, roughness: 0.4, metalness: 0 });
         let controlLampGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-
         let controlLamp = new THREE.Mesh(controlLampGeometry, controlLampMaterial);
-
         controlLamp.position.x = -3.5;
         controlLamp.position.y = 3;
         controlLamp.position.z = 1.25;
         this.add(controlLamp);
 
+        //volume
         let volumeMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
         let volumeGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.3, 32, 1, false);
-        
         let volume = new THREE.Mesh(volumeGeometry, volumeMaterial);
-
         volume.position.x =-4.8;
         volume.position.y = 5;
         volume.position.z = 0;
-
         volume.rotation.x = 90 * DEG_TO_RAD;
-
         this.add(volume);
     }
 }
