@@ -136,6 +136,17 @@ class GameBoy extends THREE.Group {
         this.add(controlLamp);
 
 
+        let volumeMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
+        let volumeGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.3, 32, 1, false);
+        
+        let volume = new THREE.Mesh(volumeGeometry, volumeMaterial);
 
+        volume.position.x =-4.8;
+        volume.position.y = 5;
+        volume.position.z = 0;
+
+        volume.rotation.x = 90 * DEG_TO_RAD;
+
+        this.add(volume);
     }
 }
