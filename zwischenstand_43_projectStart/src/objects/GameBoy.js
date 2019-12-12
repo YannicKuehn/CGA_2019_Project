@@ -37,7 +37,7 @@ class GameBoy extends THREE.Group {
         batteryPack.position.z = -1.7;
         this.add(batteryPack);
 
-        let abButtonMaterial = new THREE.MeshStandardMaterial({ color: 0xce42f5, roughness: 0.4, metalness: 0 });
+        let abButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x5e044c, roughness: 0.4, metalness: 0 });
         let abButtonGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32, 1, false);
 
         let aButton = new THREE.Mesh(abButtonGeometry, abButtonMaterial);
