@@ -27,7 +27,34 @@ class GameBoy extends THREE.Group {
         let korpusGeometry = new THREE.BoxGeometry(10, 15, 2.5);
         let korpus = new THREE.Mesh(korpusGeometry, korpusMaterial);
         korpus.castShadow = true;
-        this.add(korpus);
+
+        let linkInterfaceGeometry = new THREE.BoxGeometry(1.5, 1, 1);
+        let linkInterface = new THREE.Mesh(linkInterfaceGeometry, korpusMaterial);
+
+        linkInterface.position.x = -5;
+        linkInterface.position.y = 3.5;
+
+        let powerSwitchGapGeometry = new THREE.BoxGeometry(1.5, 1, 0.5);
+        let powerSwitchGap = new THREE.Mesh(powerSwitchGapGeometry, korpusMaterial);
+
+        powerSwitchGap.position.x = -3;
+        powerSwitchGap.position.y = 7.5;
+
+        let korpusSubtractLink = new threecsg.subtract(korpus, linkInterface, korpusMaterial);
+        
+        //gameslotSubtract fehlt noch
+
+        let korpusSubtract = new threecsg.subtract(korpusSubtractLink, powerSwitchGap, korpusMaterial);
+
+        this.add(korpusSubtract);
+
+        let powerSwitchMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
+        let powerSwitchGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.4);
+        let powerSwitch = new THREE.Mesh(powerSwitchGeometry, powerSwitchMaterial);
+        powerSwitch.position.x = -2.5;
+        powerSwitch.position.y = 7.3;
+        this.add(powerSwitch);
+
 
         let batteryPackMaterial = korpusMaterial;
         let batteryPackGeometry = new THREE.BoxGeometry(8, 10, 1.5);
@@ -134,7 +161,6 @@ class GameBoy extends THREE.Group {
         controlLamp.position.y = 3;
         controlLamp.position.z = 1.25;
         this.add(controlLamp);
-
 
         let volumeMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
         let volumeGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.3, 32, 1, false);
