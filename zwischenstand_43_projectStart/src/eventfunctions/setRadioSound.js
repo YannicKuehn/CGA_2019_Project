@@ -3,7 +3,7 @@ function setRadioSound(event) {
     soundscape.getSounds()["src/sound/files/sound_01.mp3"].pause();
     soundscape.getSounds()["src/sound/files/sound_02.mp3"].pause();
     soundscape.getSounds()["src/sound/files/white_noise.mp3"].pause();
-
+ 
 
     if (radioState.powerOn) {
 

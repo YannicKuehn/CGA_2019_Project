@@ -203,13 +203,9 @@ class GameBoy extends THREE.Group {
         volume.name = "volume";
         this.add(volume);
 
-
-
     }
-
-
-
 }
+
 function setGameBoyState(){
     gameBoyState = {
         powerOn: false,
