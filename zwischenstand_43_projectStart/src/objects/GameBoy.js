@@ -11,22 +11,14 @@ class GameBoy extends THREE.Group {
     addParts() {
 
         let korpusMaterial = new THREE.MeshStandardMaterial({ color: 0xE0E0E0, roughness: 0.1, metalness: 0 });
-
-        /*         var korpusMaterial = new THREE.MeshLambertMaterial({
-                    color: 0xE0E0E0,
-                    roughness: 0.8,
-                    metalness: 0
-                });
-                var path = "../../lib/three.js-r109/examples/textures/cube/Bridge2/";
-                var images = [path + "posx.jpg", path + "negx.jpg", path + "posy.jpg", path + "negy.jpg", path + "posz.jpg", path + "negz.jpg"];
-                var cubeTextur = new THREE.CubeTextureLoader().load(images);
-                cubeTextur.mapping = THREE.CubeReflectionMapping;
-                korpusMaterial.envMap = cubeTextur;
-                korpusMaterial.combine = THREE.MixOperation;
-                korpusMaterial.reflectivity = 0.005; */
+        var logoMaterial = new THREE.MeshLambertMaterial({
+            color: 0xffffff
+        });
+        logoMaterial.map = new THREE.TextureLoader().load('src/images/skala.png');
+        var materialArray = [korpusMaterial, korpusMaterial, korpusMaterial, korpusMaterial, logoMaterial, korpusMaterial];
 
         let korpusGeometry = new THREE.BoxGeometry(10, 15, 2.5);
-        let korpus = new THREE.Mesh(korpusGeometry, korpusMaterial);
+        let korpus = new THREE.Mesh(korpusGeometry, materialArray);
 
         let linkInterfaceGeometry = new THREE.BoxGeometry(1.5, 1, 1);
         let linkInterface = new THREE.Mesh(linkInterfaceGeometry, korpusMaterial);
