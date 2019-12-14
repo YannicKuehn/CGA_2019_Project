@@ -22,7 +22,12 @@ function executeRaycast(event) {
                 firstHit.userData.forwardTween.stop();
                 firstHit.userData.backwardTween.start();
             }
+        } else if (firstHit.name === "powerSwitch") {
+            firstHit.userData.toggleEndPosition();
+            console.log(firstHit.name);
         }
+
+
 
         if (firstHit.name === "EinschalterFBX") {
             radioState.powerOn = !radioState.powerOn;

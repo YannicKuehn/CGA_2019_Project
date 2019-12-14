@@ -41,7 +41,6 @@ class GameBoy extends THREE.Group {
 
         let korpusSubtractLink = new threecsg.subtract(korpus, linkInterface, korpusMaterial);
         
-
         let korpusSubtract = new threecsg.subtract(korpusSubtractLink, powerSwitchGap, korpusMaterial);
 
         korpusSubtract.castShadow = true;
@@ -52,7 +51,14 @@ class GameBoy extends THREE.Group {
         let powerSwitch = new THREE.Mesh(powerSwitchGeometry, powerSwitchMaterial);
         powerSwitch.position.x = -2.5;
         powerSwitch.position.y = 7.3;
+        powerSwitch.name = "powerSwitch";
         this.add(powerSwitch);
+
+        var powerSwitchAnimation = new Animation(powerSwitch, AnimationType.TRANSLATION, AnimationAxis.X);
+        powerSwitchAnimation.setAmount(-0.95);
+        powerSwitchAnimation.setSpeed(3);
+        powerSwitch.userData = powerSwitchAnimation;
+        this.animations.push(powerSwitchAnimation);
 
         //batteryPack
         let batteryPackMaterial = korpusMaterial;

@@ -114,9 +114,13 @@ function main() {
         var delta = clock.getDelta();
 
         physics.update(delta);
-        physicsVisualDebugger.update();
+        //physicsVisualDebugger.update();
 
         radio.animations.forEach(function (animation) {
+            animation.update(delta)
+        });
+
+        gameBoy.animations.forEach(function (animation) {
             animation.update(delta)
         });
 
