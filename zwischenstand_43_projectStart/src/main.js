@@ -52,6 +52,7 @@ function main() {
 
     let gameBoy = new GameBoy();
     gameBoy.position.set(0, 90, 15);
+    physics.addBox(gameBoy, 3, 10, 15, 3.5, 0, 0, -0.5);
     scene.add(gameBoy);
 
     var radioFromFile = new RadioFromFile();
@@ -113,7 +114,7 @@ function main() {
         var delta = clock.getDelta();
 
         physics.update(delta);
-        //physicsVisualDebugger.update();
+        physicsVisualDebugger.update();
 
         radio.animations.forEach(function (animation) {
             animation.update(delta)

@@ -70,9 +70,9 @@ class GameBoy extends THREE.Group {
         
         
         let batteryPackSubtract = new threecsg.subtract(batteryPack, gameSlot, korpusMaterial);
+        batteryPackSubtract.castShadow = true;
         this.add(batteryPackSubtract);
 
-        
 
         //A + B Buttons
         let abButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x5e044c, roughness: 0.4, metalness: 0 });
