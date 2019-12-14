@@ -72,11 +72,13 @@ function main() {
     physics.addCylinder(bowlFromFile, 1, 20, 11, 13, 32, 0, 13 / 2, 0, -90 * DEG_TO_RAD, 0, 0);
     scene.add(bowlFromFile);
 
-    var table = new TableFromFile();
-    physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
-    scene.add(table);
+    //var table = new TableFromFile();
+    //physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
+    //scene.add(table);
 
     var desk = new DeskFromFile();
+    desk.scale.set(0.5, 0.5, 0.5);
+    physics.addCylinder(desk, 0, 65, 65, 3, 16, 0, 70.2, 0, -90 * DEG_TO_RAD, 0, 0);
     scene.add(desk);
 
     scene.add(new Floor(200, 200, 8));
@@ -108,7 +110,7 @@ function main() {
 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(new THREE.Color(0xFFFFFF));
+    renderer.setClearColor(new THREE.Color(0x000000));
     renderer.shadowMap.enabled = true;
 
     document.getElementById("3d_content").appendChild(renderer.domElement);
@@ -120,7 +122,7 @@ function main() {
         var delta = clock.getDelta();
 
         physics.update(delta);
-        //physicsVisualDebugger.update();
+        physicsVisualDebugger.update();
 
         radio.animations.forEach(function (animation) {
             animation.update(delta)

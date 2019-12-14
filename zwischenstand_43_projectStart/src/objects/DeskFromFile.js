@@ -7,7 +7,6 @@ DeskFromFile = function () {
     fbxloader.load("src/models/Desk/round table.fbx", function (model) {
 
         desk.add(model);
-        desk.scale.set(0.5, 0.5, 0.5);
 
         model.traverse(function (child) {
             if (child.isMesh) {
