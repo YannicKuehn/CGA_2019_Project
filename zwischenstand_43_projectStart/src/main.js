@@ -16,6 +16,7 @@ document.write('<script type="text/javascript" src="src/objects/Floor.js"></scri
 document.write('<script type="text/javascript" src="src/objects/RadioFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/BowlFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/TableFromFile.js"></script>');
+document.write('<script type="text/javascript" src="src/objects/DeskFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Lights.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Animation.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Tween.js"></script>');
@@ -75,6 +76,9 @@ function main() {
     physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
     scene.add(table);
 
+    var desk = new DeskFromFile();
+    scene.add(desk);
+
     scene.add(new Floor(200, 200, 8));
 
     var lights = new Lights();
@@ -104,7 +108,7 @@ function main() {
 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(new THREE.Color(0x000000));
+    renderer.setClearColor(new THREE.Color(0xFFFFFF));
     renderer.shadowMap.enabled = true;
 
     document.getElementById("3d_content").appendChild(renderer.domElement);
