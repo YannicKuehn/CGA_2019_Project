@@ -5,6 +5,7 @@ class GameBoy extends THREE.Group {
 
         this.animations = new Array();
         this.addParts();
+        setGameBoyState();
     }
 
     addParts() {
@@ -188,6 +189,19 @@ class GameBoy extends THREE.Group {
         volume.position.y = 5;
         volume.position.z = 0;
         volume.rotation.x = 90 * DEG_TO_RAD;
+        volume.name = "volume";
         this.add(volume);
+
+
+
     }
+
+
+
+}
+function setGameBoyState(){
+    gameBoyState = {
+        powerOn: false,
+        volumeHigh: false
+    }; 
 }

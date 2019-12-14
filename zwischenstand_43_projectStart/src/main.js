@@ -28,6 +28,7 @@ document.write('<script type="text/javascript" src="src/eventfunctions/calculate
 document.write('<script type="text/javascript" src="src/eventfunctions/executeRaycast.js"></script>');
 document.write('<script type="text/javascript" src="src/eventfunctions/executeKeyAction.js"></script>');
 document.write('<script type="text/javascript" src="src/eventfunctions/setRadioSound.js"></script>');
+document.write('<script type="text/javascript" src="src/eventfunctions/setGameBoySound.js"></script>');
 
 const DEG_TO_RAD = Math.PI / 180;
 
@@ -53,6 +54,7 @@ function main() {
     let gameBoy = new GameBoy();
     gameBoy.position.set(0, 90, 15);
     physics.addBox(gameBoy, 3, 10, 15, 3.5, 0, 0, -0.5);
+    soundscape.addSound(gameBoy, "src/sound/files/World_Music.mp3", 5, true);   
     scene.add(gameBoy);
 
     var radioFromFile = new RadioFromFile();
@@ -143,7 +145,9 @@ function main() {
     window.onkeyup = keyUpAction;
 
     window.addEventListener("radioStateChanged", setRadioSound);
+    window.addEventListener("gameBoyStateChanged", setGameBoySound);
     window.dispatchEvent(new Event("radioStateChanged"));
+    window.dispatchEvent(new Event("gameBoyStateChanged"));
 }
 
 window.onload = main;

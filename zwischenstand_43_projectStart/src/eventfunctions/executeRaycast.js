@@ -23,14 +23,16 @@ function executeRaycast(event) {
                 firstHit.userData.backwardTween.start();
             }
         } else if (firstHit.name === "powerSwitch") {
+            gameBoyState.powerOn = !gameBoyState.powerOn;
             firstHit.userData.toggleEndPosition();
-            console.log(firstHit.name);
+            window.dispatchEvent(new Event("gameBoyStateChanged"));
         } else if (firstHit.name === "aButton") {
             firstHit.userData.toggleEndPosition();
-            console.log(firstHit.name);
         } else if (firstHit.name === "bButton") {
             firstHit.userData.toggleEndPosition();
-            console.log(firstHit.name);
+        } else if (firstHit.name === "volume") {
+            gameBoyState.volumeHigh = !gameBoyState.volumeHigh;
+            window.dispatchEvent(new Event("gameBoyStateChanged"));
         }
 
 
