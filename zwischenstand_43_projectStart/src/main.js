@@ -49,8 +49,8 @@ function main() {
     var radio = new Radio();
     radio.position.set(-30, 83, 10);
     radio.rotation.y = 20 * DEG_TO_RAD;
-    physics.addBox(radio, 3, 30, 20, 8);
-    scene.add(radio);
+    //physics.addBox(radio, 3, 30, 20, 8);
+    //scene.add(radio);
 
     let gameBoy = new GameBoy();
     gameBoy.position.set(0, 90, 15);
@@ -61,24 +61,24 @@ function main() {
     var radioFromFile = new RadioFromFile();
     radioFromFile.position.set(30, 83, 10);
     radioFromFile.rotation.y = -20 * DEG_TO_RAD;
-    physics.addBox(radioFromFile, 3, 30, 20, 8);
+    //physics.addBox(radioFromFile, 3, 30, 20, 8);
     soundscape.addSound(radioFromFile, "src/sound/files/sound_01.mp3", 5, true);
     soundscape.addSound(radioFromFile, "src/sound/files/sound_02.mp3", 5, true);
     soundscape.addSound(radioFromFile, "src/sound/files/white_noise.mp3", 5, true);
-    scene.add(radioFromFile);
+    //scene.add(radioFromFile);
 
     var bowlFromFile = new BowlFromFile();
     bowlFromFile.position.set(0, 73, -15);
-    physics.addCylinder(bowlFromFile, 1, 20, 11, 13, 32, 0, 13 / 2, 0, -90 * DEG_TO_RAD, 0, 0);
-    scene.add(bowlFromFile);
+    //physics.addCylinder(bowlFromFile, 1, 20, 11, 13, 32, 0, 13 / 2, 0, -90 * DEG_TO_RAD, 0, 0);
+    //scene.add(bowlFromFile);
 
-    //var table = new TableFromFile();
+    var table = new TableFromFile();
     //physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
     //scene.add(table);
 
     var desk = new DeskFromFile();
     desk.scale.set(0.5, 0.5, 0.5);
-    physics.addCylinder(desk, 0, 65, 65, 3, 16, 0, 70.2, 0, -90 * DEG_TO_RAD, 0, 0);
+    physics.addCylinder(desk, 0, 65, 65, 3, 16, 0, 69.4, 0, -90 * DEG_TO_RAD, 0, 0);
     scene.add(desk);
 
     scene.add(new Floor(200, 200, 8));
