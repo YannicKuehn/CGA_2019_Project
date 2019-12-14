@@ -10,15 +10,32 @@ class GameBoy extends THREE.Group {
 
     addParts() {
 
-        let korpusMaterial = new THREE.MeshStandardMaterial({ color: 0xE0E0E0, roughness: 0.1, metalness: 0 });
-        var logoMaterial = new THREE.MeshLambertMaterial({
-            color: 0xffffff
+        //let korpusMaterial = new THREE.MeshStandardMaterial({ color: 0xE0E0E0, roughness: 0.1, metalness: 0 });
+        
+         let korpusMaterial = new THREE.MeshLambertMaterial({
+            color: 0xE0E0E0
+        }); 
+
+        var blendeMaterial = new THREE.MeshLambertMaterial({
+            color: 0xE0E0E0
         });
-        logoMaterial.map = new THREE.TextureLoader().load('src/images/skala.png');
-        var materialArray = [korpusMaterial, korpusMaterial, korpusMaterial, korpusMaterial, logoMaterial, korpusMaterial];
+        var skalaMaterial = new THREE.MeshLambertMaterial({
+            color: 0xE0E0E0
+        });
+        skalaMaterial.map = new THREE.TextureLoader().load('src/images/GameBoyLogo.jpeg');
+        var materialArray = [blendeMaterial, blendeMaterial, blendeMaterial, blendeMaterial, skalaMaterial, blendeMaterial];
+
+        let logoGeometry = new THREE.BoxGeometry(6,1,1);
+        let logo = new THREE.Mesh(logoGeometry, materialArray)
+        logo.position.x = -1;
+        logo.position.y = -1.4;
+        logo.position.z = 0.76;
+        this.add(logo);
 
         let korpusGeometry = new THREE.BoxGeometry(10, 15, 2.5);
-        let korpus = new THREE.Mesh(korpusGeometry, materialArray);
+
+        let korpus = new THREE.Mesh(korpusGeometry, korpusMaterial);
+        //this.add(korpus);
 
         let linkInterfaceGeometry = new THREE.BoxGeometry(1.5, 1, 1);
         let linkInterface = new THREE.Mesh(linkInterfaceGeometry, korpusMaterial);
@@ -34,6 +51,7 @@ class GameBoy extends THREE.Group {
 
         let korpusSubtractLink = new threecsg.subtract(korpus, linkInterface, korpusMaterial);
         
+
         let korpusSubtract = new threecsg.subtract(korpusSubtractLink, powerSwitchGap, korpusMaterial);
 
         korpusSubtract.castShadow = true;
@@ -153,7 +171,7 @@ class GameBoy extends THREE.Group {
         let screenCaseGeometry = new THREE.BoxGeometry(8,7,2);
         let screenCase = new THREE.Mesh(screenCaseGeometry, screenCaseMaterial);
         screenCase.position.y = 3;
-        screenCase.position.z = 0.28;
+        screenCase.position.z = 0.3;
         this.add(screenCase);
 
         //sreen
@@ -161,7 +179,7 @@ class GameBoy extends THREE.Group {
         let screenGeometry = new THREE.BoxGeometry(6, 5, 2);
         let screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 3;
-        screen.position.z = 0.31;
+        screen.position.z = 0.4;
         this.add(screen);
 
         //controlLamp
