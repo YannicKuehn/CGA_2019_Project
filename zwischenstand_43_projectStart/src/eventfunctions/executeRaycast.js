@@ -25,6 +25,12 @@ function executeRaycast(event) {
         } else if (firstHit.name === "powerSwitch") {
             firstHit.userData.toggleEndPosition();
             console.log(firstHit.name);
+        } else if (firstHit.name === "aButton") {
+            firstHit.userData.toggleEndPosition();
+            console.log(firstHit.name);
+        } else if (firstHit.name === "bButton") {
+            firstHit.userData.toggleEndPosition();
+            console.log(firstHit.name);
         }
 
 

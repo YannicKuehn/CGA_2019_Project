@@ -46,6 +46,7 @@ class GameBoy extends THREE.Group {
         korpusSubtract.castShadow = true;
         this.add(korpusSubtract);
 
+        //powerSwitch
         let powerSwitchMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
         let powerSwitchGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.4);
         let powerSwitch = new THREE.Mesh(powerSwitchGeometry, powerSwitchMaterial);
@@ -54,6 +55,7 @@ class GameBoy extends THREE.Group {
         powerSwitch.name = "powerSwitch";
         this.add(powerSwitch);
 
+        //powerSwitch Animation
         var powerSwitchAnimation = new Animation(powerSwitch, AnimationType.TRANSLATION, AnimationAxis.X);
         powerSwitchAnimation.setAmount(-0.95);
         powerSwitchAnimation.setSpeed(3);
@@ -91,13 +93,27 @@ class GameBoy extends THREE.Group {
         aButton.position.y = -2.5;
         aButton.position.z = 0.5;
         aButton.rotation.x = 90 * DEG_TO_RAD;
+        aButton.name = "aButton";
         this.add(aButton);
+
+        var aButtonAnimation = new Animation(aButton, AnimationType.TRANSLATION, AnimationAxis.Z);
+        aButtonAnimation.setAmount(-0.1);
+        aButtonAnimation.setSpeed(3);
+        aButton.userData = aButtonAnimation;
+        this.animations.push(aButtonAnimation);
 
         bButton.position.x = 1.9;
         bButton.position.y = -3.45;
         bButton.position.z = 0.5;
         bButton.rotation.x = 90 * DEG_TO_RAD;
+        bButton.name = "bButton";
         this.add(bButton);
+
+        var bButtonAnimation = new Animation(bButton, AnimationType.TRANSLATION, AnimationAxis.Z);
+        bButtonAnimation.setAmount(-0.1);
+        bButtonAnimation.setSpeed(3);
+        bButton.userData = bButtonAnimation;
+        this.animations.push(bButtonAnimation);
 
         //Cross
         let crossMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });

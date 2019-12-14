@@ -41,7 +41,7 @@ class Radio extends THREE.Group {
         antennenAnimation.setAmount(70 * DEG_TO_RAD);
         antennenAnimation.setSpeed(40 * DEG_TO_RAD);
         antenne.userData = antennenAnimation;
-        this.animations.push(antennenAnimation);
+        //this.animations.push(antennenAnimation);
 
         var einschalterGeometry = new THREE.BoxGeometry(3, 1, 1);
         var einschalter = new THREE.Mesh(einschalterGeometry, metallMaterial);
@@ -55,7 +55,7 @@ class Radio extends THREE.Group {
         einschalterAnimation.setAmount(-0.5);
         einschalterAnimation.setSpeed(2);
         einschalter.userData = einschalterAnimation;
-        this.animations.push(einschalterAnimation);
+        //this.animations.push(einschalterAnimation);
 
         // Lautsprecherteil mit Bump Map
         // -----------------------------
