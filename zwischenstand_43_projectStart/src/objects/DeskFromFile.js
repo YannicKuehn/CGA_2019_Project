@@ -6,6 +6,7 @@ DeskFromFile = function () {
 
     var deskMaterial = new THREE.MeshLambertMaterial( {color: 0xFFFFFF});
     deskMaterial.map = new THREE.TextureLoader().load('src/models/Desk/Textures/Round table texture.png');
+    deskMaterial.map.anisotropy = 8;
 
     radioAnimationMixer = null;
 
