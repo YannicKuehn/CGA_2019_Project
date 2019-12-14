@@ -26,7 +26,6 @@ class GameBoy extends THREE.Group {
 
         let korpusGeometry = new THREE.BoxGeometry(10, 15, 2.5);
         let korpus = new THREE.Mesh(korpusGeometry, korpusMaterial);
-        korpus.castShadow = true;
 
         let linkInterfaceGeometry = new THREE.BoxGeometry(1.5, 1, 1);
         let linkInterface = new THREE.Mesh(linkInterfaceGeometry, korpusMaterial);
@@ -42,10 +41,10 @@ class GameBoy extends THREE.Group {
 
         let korpusSubtractLink = new threecsg.subtract(korpus, linkInterface, korpusMaterial);
         
-        //gameslotSubtract fehlt noch
 
         let korpusSubtract = new threecsg.subtract(korpusSubtractLink, powerSwitchGap, korpusMaterial);
 
+        korpusSubtract.castShadow = true;
         this.add(korpusSubtract);
 
         let powerSwitchMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
@@ -55,15 +54,27 @@ class GameBoy extends THREE.Group {
         powerSwitch.position.y = 7.3;
         this.add(powerSwitch);
 
-
+        //batteryPack
         let batteryPackMaterial = korpusMaterial;
         let batteryPackGeometry = new THREE.BoxGeometry(8, 10, 1.5);
         let batteryPack = new THREE.Mesh(batteryPackGeometry, batteryPackMaterial);
         batteryPack.position.x = 0;
         batteryPack.position.y = 0;
         batteryPack.position.z = -1.7;
-        this.add(batteryPack);
 
+        let gameSlotGeometry = new THREE.BoxGeometry(6, 8, 0.9);
+        let gameSlot = new THREE.Mesh(gameSlotGeometry, korpusMaterial);
+        
+        gameSlot.position.y = 5.5;
+        gameSlot.position.z = -1.7;
+        
+        
+        let batteryPackSubtract = new threecsg.subtract(batteryPack, gameSlot, korpusMaterial);
+        this.add(batteryPackSubtract);
+
+        
+
+        //A + B Buttons
         let abButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x5e044c, roughness: 0.4, metalness: 0 });
         let abButtonGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 32, 1, false);
         
@@ -82,6 +93,7 @@ class GameBoy extends THREE.Group {
         bButton.rotation.x = 90 * DEG_TO_RAD;
         this.add(bButton);
 
+        //Cross
         let crossMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
         let crossGeometry = new THREE.BoxGeometry(2, 0.75, 1);
 
@@ -102,7 +114,7 @@ class GameBoy extends THREE.Group {
         //loch in der mitte fehlt noch
         //sphere abziehen
 
-
+        //startButton
         let startButtonMaterial = new THREE.MeshStandardMaterial({ color: 0x4d4d4d, roughness: 0.4, metalness: 0 });
         let startButtonGeometry = new THREE.SphereGeometry(0.2, 32, 32);
         startButtonGeometry.applyMatrix(new THREE.Matrix4().makeScale(3, 1, 1));
@@ -113,7 +125,7 @@ class GameBoy extends THREE.Group {
         startButton.rotation.z = 30 * DEG_TO_RAD;
         this.add(startButton);
 
-       
+        //selectButton
         let selectButton = new THREE.Mesh(startButtonGeometry, startButtonMaterial);
         selectButton.position.x = -0.7;
         selectButton.position.y = -5;
