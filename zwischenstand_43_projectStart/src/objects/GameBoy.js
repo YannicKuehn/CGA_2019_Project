@@ -23,13 +23,14 @@ class GameBoy extends THREE.Group {
             color: 0xE0E0E0
         });
         skalaMaterial.map = new THREE.TextureLoader().load('src/images/GameBoyLogo.jpeg');
+        skalaMaterial.map.anisotropy = 8;
         var materialArray = [blendeMaterial, blendeMaterial, blendeMaterial, blendeMaterial, skalaMaterial, blendeMaterial];
 
         let logoGeometry = new THREE.BoxGeometry(6,1,1);
         let logo = new THREE.Mesh(logoGeometry, materialArray)
         logo.position.x = -1;
         logo.position.y = -1.4;
-        logo.position.z = 0.76;
+        logo.position.z = 0.77;
         this.add(logo);
 
         let korpusGeometry = new THREE.BoxGeometry(10, 15, 2.5);
