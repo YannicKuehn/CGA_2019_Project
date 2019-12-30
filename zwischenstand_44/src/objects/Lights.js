@@ -31,7 +31,7 @@ class Lights {
         var directionaLight = new THREE.DirectionalLight(0xffffff);
         directionaLight.position.set(posX, posY, posZ);
         directionaLight.lookAt(scene.position);
-        directionaLight.intensity = 0.7;
+        directionaLight.intensity = 0.8;
         directionaLight.castShadow = true;
         directionaLight.shadow.radius = 2;
         directionaLight.shadow.mapSize.width = 2048;

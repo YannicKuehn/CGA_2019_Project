@@ -45,7 +45,7 @@ function main() {
 
     let gameBoy = new GameBoy();
     gameBoy.position.set(15, 88, 5);
-    physics.addBox(gameBoy, 3, 10, 15, 3.5, 0, 0, -0.5);
+    physics.addBox(gameBoy, 5, 10, 15, 3.5, 0, 0, -0.5);
     soundscape.addSound(gameBoy, "src/sound/files/World_Music.mp3", 5, true);   
     scene.add(gameBoy);
 
@@ -81,7 +81,7 @@ function main() {
 
     var gui = new dat.GUI();
     gui.add(directionalLight.position, "x", -200, 200);
-    gui.add(directionalLight.position, "y", -200, 200);
+    gui.add(directionalLight.position, "y", 0, 200);
     gui.add(directionalLight.position, "z", -200, 200);
     gui.domElement.onmouseenter = function () {
         orbitControls.enabled = false;
