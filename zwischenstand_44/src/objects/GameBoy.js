@@ -186,7 +186,7 @@ class GameBoy extends THREE.Group {
         screenTextur.mapping = THREE.CubeReflectionMapping;
         screenMaterial.envMap = screenTextur;
         screenMaterial.combine = THREE.MixOperation;
-        screenMaterial.reflectivity = 0.03;
+        screenMaterial.reflectivity = 0.05;
         let screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 3;
         screen.position.z = 0.4;

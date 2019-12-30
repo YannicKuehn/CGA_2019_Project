@@ -4,7 +4,7 @@ ModelFromFile = function () {
 
     var fbxloader = new THREE.FBXLoader();
 
-    var teapotMaterial = new THREE.MeshStandardMaterial({ color: 0x851519, roughness: 0.1, metalness: 0.1 });
+    var teapotMaterial = new THREE.MeshStandardMaterial({ color: 0x851519, roughness: 0.3, metalness: 0.2});
     teapotMaterial.side = THREE.DoubleSide;
 
     fbxloader.load("src/models/ImportedModel/teapot.fbx", function (model) {
