@@ -62,14 +62,14 @@ class GameBoy extends THREE.Group {
         let powerSwitchMaterial = new THREE.MeshStandardMaterial({ color: 0x404040, roughness: 0.2, metalness: 0.1 });
         let powerSwitchGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.4);
         let powerSwitch = new THREE.Mesh(powerSwitchGeometry, powerSwitchMaterial);
-        powerSwitch.position.x = -2.5;
+        powerSwitch.position.x = -3.45;
         powerSwitch.position.y = 7.3;
         powerSwitch.name = "powerSwitch";
         this.add(powerSwitch);
 
         //powerSwitch Animation
         var powerSwitchAnimation = new Animation(powerSwitch, AnimationType.TRANSLATION, AnimationAxis.X);
-        powerSwitchAnimation.setAmount(-0.95);
+        powerSwitchAnimation.setAmount(0.95);
         powerSwitchAnimation.setSpeed(3);
         powerSwitch.userData = powerSwitchAnimation;
         this.animations.push(powerSwitchAnimation);

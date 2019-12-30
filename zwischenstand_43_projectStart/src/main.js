@@ -18,7 +18,7 @@ document.write('<script type="text/javascript" src="src/objects/RadioFromFile.js
 document.write('<script type="text/javascript" src="src/objects/BowlFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/TableFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/DeskFromFile.js"></script>');
-document.write('<script type="text/javascript" src="src/objects/SantaFromFile.js"></script>');
+document.write('<script type="text/javascript" src="src/objects/ModelFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Lights.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Animation.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Tween.js"></script>');
@@ -55,7 +55,7 @@ function main() {
     //scene.add(radio);
 
     let gameBoy = new GameBoy();
-    gameBoy.position.set(0, 90, 15);
+    gameBoy.position.set(15, 88, 5);
     physics.addBox(gameBoy, 3, 10, 15, 3.5, 0, 0, -0.5);
     soundscape.addSound(gameBoy, "src/sound/files/World_Music.mp3", 5, true);   
     scene.add(gameBoy);
@@ -77,6 +77,11 @@ function main() {
     var table = new TableFromFile();
     //physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
     //scene.add(table);
+
+    var teapot = new ModelFromFile();
+    teapot.position.set(-10, 70.75, 5);
+    physics.addCylinder(teapot, 9, 7.5, 10, 12.5, 32, 0, 6.42, 0, -90 * DEG_TO_RAD, 0, 0);
+    scene.add(teapot);
 
     var desk = new DeskFromFile();
     desk.scale.set(0.5, 0.5, 0.5);
