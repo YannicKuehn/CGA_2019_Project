@@ -13,10 +13,12 @@ document.write('<script type="text/javascript" src="../../lib/cannon.js-0.6.2/to
 document.write('<script type="text/javascript" src="src/objects/GameBoy.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Radio.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Floor.js"></script>');
+document.write('<script type="text/javascript" src="src/objects/Wall.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/RadioFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/BowlFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/TableFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/DeskFromFile.js"></script>');
+document.write('<script type="text/javascript" src="src/objects/SantaFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Lights.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Animation.js"></script>');
 document.write('<script type="text/javascript" src="src/animation/Tween.js"></script>');
@@ -38,7 +40,7 @@ function main() {
     scene = new THREE.Scene();
 
     physics = new Physics();
-    physics.initialize(0, -200, 0, 1 / 120, true);
+    physics.initialize(0, -200, 0, 1 / 240, true);
     physicsVisualDebugger = new THREE.CannonDebugRenderer(scene, physics.getWorld());
 
     soundscape = new Soundscape();
@@ -81,14 +83,18 @@ function main() {
     physics.addCylinder(desk, 0, 65, 65, 3, 16, 0, 69.4, 0, -90 * DEG_TO_RAD, 0, 0);
     scene.add(desk);
 
-    scene.add(new Floor(200, 200, 8));
+    scene.add(new Floor(400, 400, 8));
+
+    var wall = new Wall(400,350, 4);
+    physics.addBox(wall, 0, 400, 350, 1, 0, 0, 0);
+    scene.add(wall);
 
     var lights = new Lights();
     scene.add(lights.createAmbientLight());
     var directionalLight = lights.createDirectionalLight(-30, 200, 100);
     scene.add(directionalLight);
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
     camera.position.set(0, 150, 150);
     camera.lookAt(0, 83, 0);
     camera.add(soundscape.getAudioListener());

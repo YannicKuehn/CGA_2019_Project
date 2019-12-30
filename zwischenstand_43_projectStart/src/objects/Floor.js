@@ -10,11 +10,12 @@ class Floor extends THREE.Mesh {
             metalness: 0.0
         });
 
-        var floorTexture = new THREE.TextureLoader().load("src/images/checker.png");
+        var floorTexture = new THREE.TextureLoader().load("src/images/floortexture.jpg");
         floorTexture.repeat.set(segments / 2, segments / 2);
         floorTexture.wrapS = THREE.RepeatWrapping;
         floorTexture.wrapT = THREE.RepeatWrapping;
         floorMaterial.map = floorTexture;
+        floorMaterial.map.anisotropy = 8;
         var floor = new THREE.Mesh(floorGeometry, floorMaterial);
         floor.rotation.x = -90 * DEG_TO_RAD;
         floor.receiveShadow = true;
