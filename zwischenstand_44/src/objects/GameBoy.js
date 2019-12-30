@@ -12,9 +12,9 @@ class GameBoy extends THREE.Group {
 
         //let korpusMaterial = new THREE.MeshStandardMaterial({ color: 0xE0E0E0, roughness: 0.1, metalness: 0 });
         
-         let korpusMaterial = new THREE.MeshLambertMaterial({
+        let korpusMaterial = new THREE.MeshLambertMaterial({
             color: 0xE0E0E0
-        }); 
+        });
 
         var blendeMaterial = new THREE.MeshLambertMaterial({
             color: 0xE0E0E0
@@ -51,7 +51,6 @@ class GameBoy extends THREE.Group {
         powerSwitchGap.position.y = 7.5;
 
         let korpusSubtractLink = new threecsg.subtract(korpus, linkInterface, korpusMaterial);
-        
 
         let korpusSubtract = new threecsg.subtract(korpusSubtractLink, powerSwitchGap, korpusMaterial);
 
@@ -175,9 +174,19 @@ class GameBoy extends THREE.Group {
         screenCase.position.z = 0.3;
         this.add(screenCase);
 
-        //sreen
-        let screenMaterial = new THREE.MeshStandardMaterial({ color: 0x4b694a, roughness: 0.4, metalness: 0 });
+        //screen
+        //let screenMaterial = new THREE.MeshStandardMaterial({ color: 0x4b694a, roughness: 0.4, metalness: 0 });
         let screenGeometry = new THREE.BoxGeometry(6, 5, 2);
+        let screenMaterial = new THREE.MeshLambertMaterial({ color: 0x4b694a });
+        var path = "src/images/reflection/";
+        var images = [path + "posx.jpg", path + "negx.jpg",
+                      path + "posy.jpg", path + "negy.jpg",
+                      path + "posz.jpg", path + "negz.jpg"];
+        var screenTextur = new THREE.CubeTextureLoader().load(images);
+        screenTextur.mapping = THREE.CubeReflectionMapping;
+        screenMaterial.envMap = screenTextur;
+        screenMaterial.combine = THREE.MixOperation;
+        screenMaterial.reflectivity = 0.03;
         let screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 3;
         screen.position.z = 0.4;
