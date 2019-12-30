@@ -11,12 +11,8 @@ document.write('<script type="text/javascript" src="../../lib/cannon.js-0.6.2/to
 
 // Own modules
 document.write('<script type="text/javascript" src="src/objects/GameBoy.js"></script>');
-document.write('<script type="text/javascript" src="src/objects/Radio.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Floor.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Wall.js"></script>');
-document.write('<script type="text/javascript" src="src/objects/RadioFromFile.js"></script>');
-document.write('<script type="text/javascript" src="src/objects/BowlFromFile.js"></script>');
-document.write('<script type="text/javascript" src="src/objects/TableFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/DeskFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/ModelFromFile.js"></script>');
 document.write('<script type="text/javascript" src="src/objects/Lights.js"></script>');
@@ -30,7 +26,6 @@ document.write('<script type="text/javascript" src="src/eventfunctions/updateAsp
 document.write('<script type="text/javascript" src="src/eventfunctions/calculateMousePosition.js"></script>');
 document.write('<script type="text/javascript" src="src/eventfunctions/executeRaycast.js"></script>');
 document.write('<script type="text/javascript" src="src/eventfunctions/executeKeyAction.js"></script>');
-document.write('<script type="text/javascript" src="src/eventfunctions/setRadioSound.js"></script>');
 document.write('<script type="text/javascript" src="src/eventfunctions/setGameBoySound.js"></script>');
 
 const DEG_TO_RAD = Math.PI / 180;
@@ -45,38 +40,14 @@ function main() {
 
     soundscape = new Soundscape();
 
-    var axes = new THREE.AxesHelper(20);
-    scene.add(axes);
-
-    var radio = new Radio();
-    radio.position.set(-30, 83, 10);
-    radio.rotation.y = 20 * DEG_TO_RAD;
-    //physics.addBox(radio, 3, 30, 20, 8);
-    //scene.add(radio);
+    //var axes = new THREE.AxesHelper(20);
+    //scene.add(axes);
 
     let gameBoy = new GameBoy();
     gameBoy.position.set(15, 88, 5);
     physics.addBox(gameBoy, 3, 10, 15, 3.5, 0, 0, -0.5);
     soundscape.addSound(gameBoy, "src/sound/files/World_Music.mp3", 5, true);   
     scene.add(gameBoy);
-
-    var radioFromFile = new RadioFromFile();
-    radioFromFile.position.set(30, 83, 10);
-    radioFromFile.rotation.y = -20 * DEG_TO_RAD;
-    //physics.addBox(radioFromFile, 3, 30, 20, 8);
-    soundscape.addSound(radioFromFile, "src/sound/files/sound_01.mp3", 5, true);
-    soundscape.addSound(radioFromFile, "src/sound/files/sound_02.mp3", 5, true);
-    soundscape.addSound(radioFromFile, "src/sound/files/white_noise.mp3", 5, true);
-    //scene.add(radioFromFile);
-
-    var bowlFromFile = new BowlFromFile();
-    bowlFromFile.position.set(0, 73, -15);
-    //physics.addCylinder(bowlFromFile, 1, 20, 11, 13, 32, 0, 13 / 2, 0, -90 * DEG_TO_RAD, 0, 0);
-    //scene.add(bowlFromFile);
-
-    var table = new TableFromFile();
-    //physics.addBox(table, 0, 130, 3, 70, 0, 71.5, 0);
-    //scene.add(table);
 
     var teapot = new ModelFromFile();
     teapot.position.set(-10, 70.75, 5);
@@ -100,7 +71,7 @@ function main() {
     scene.add(directionalLight);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
-    camera.position.set(0, 150, 150);
+    camera.position.set(0, 100, 160);
     camera.lookAt(0, 83, 0);
     camera.add(soundscape.getAudioListener());
 
@@ -135,19 +106,11 @@ function main() {
         physics.update(delta);
         //physicsVisualDebugger.update();
 
-        radio.animations.forEach(function (animation) {
-            animation.update(delta)
-        });
-
         gameBoy.animations.forEach(function (animation) {
             animation.update(delta)
         });
 
         TWEEN.update();
-
-        if (radioAnimationMixer != null) {
-            radioAnimationMixer.update(delta);
-        }
 
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
@@ -161,9 +124,7 @@ function main() {
     window.onkeydown = keyDownAction;
     window.onkeyup = keyUpAction;
 
-    window.addEventListener("radioStateChanged", setRadioSound);
     window.addEventListener("gameBoyStateChanged", setGameBoySound);
-    window.dispatchEvent(new Event("radioStateChanged"));
     window.dispatchEvent(new Event("gameBoyStateChanged"));
 }
 
